@@ -1,0 +1,15 @@
+1. Open (double click on) “puzzle.txt” and input the current state of the puzzle. The file should have a 9x9 grid of characters, where the “*” character represents an empty square.
+2. Open (double click on) “sudoku.py”
+3. Write the following commands into the prompt:
+
+command: “step()”
+function: Shows the next square to look at, marked with an “X”
+
+command: “disp()”
+function: Shows the current state of the board (this will show the answer to the hint given by the “step()” command)
+
+command: “stepsolve()”
+function: Tells you where to put the next number
+
+command: “solve()”
+function: Solves the entire board
