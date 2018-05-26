@@ -9,7 +9,7 @@ from sudoku.sudokusolver import Sudoku
 
 
 sudokuboard = SudokuBoard()
-sudokuboard.generate()
+sudokuboard.generate(1)
 
 
 def get_cell_attrs(sudokuform,cell):
@@ -21,11 +21,13 @@ def home(request):
 	action = request.POST.get('action', None)
 	suggest = request.GET.get('suggest', False)
 	matrix = request.POST.getlist('matrix')
+	nohint = False
 
 	sudokuform = SudokuForm()
 
-	if action == 'generate':
-		matrix = sudokuboard.generate()
+	if action.isdigit():
+		level = int(action)
+		matrix = sudokuboard.generate(level)
 	else:
 		matrix = sudokuform.get(request)
 	sudokuform.set(matrix)
@@ -33,14 +35,18 @@ def home(request):
 	if action == 'hint':
 		solver = Sudoku(matrix)
 		cell,value = next(solver)
-		widget = get_cell_attrs(sudokuform,cell)
-		mid1 = (cell[0] >= 3 and cell[0] <= 5)
-		mid2 = (cell[1] >= 3 and cell[1] <= 5)
-		if (mid1 or mid2) and not (mid1 and mid2):
-			blinktype = 'blink'
+		if cell != None:
+			print(str(value) + " in cell " + str((cell[0]+1,cell[1]+1)))
+			widget = get_cell_attrs(sudokuform,cell)
+			mid1 = (cell[0] >= 3 and cell[0] <= 5)
+			mid2 = (cell[1] >= 3 and cell[1] <= 5)
+			if (mid1 or mid2) and not (mid1 and mid2):
+				blinktype = 'blink'
+			else:
+				blinktype = 'blink2'
+			widget['class'] += ' animate ' + blinktype
 		else:
-			blinktype = 'blink2'
-		widget['class'] += ' animate ' + blinktype
+			nohint = True
 	elif action == 'check':
 		solver = Sudoku(sudokuboard.board)
 		solver.step = False
@@ -56,6 +62,7 @@ def home(request):
 	c = {
 		'action': action,
 		'form': sudokuform.form,
+		'nohint' : nohint,
 		# Add attribute here, then use it in home.html with {% if boolvar %} <htmlstuff> {% else %} <htmlstuff> {% endif %}
 	}
 	return render(request, 'home.html', c)

@@ -16,12 +16,12 @@
       <div class="col-sx-offset-6" style="width:480px; padding-left:5%; padding-right:5%">
         <h2 class="font-bold">{% trans "" %}</h2>
         <div class="ibox-content">
-<!--      {% if not solved and action == "solve" %}
+          {% if nohint %}
             <p class="text-danger">
               <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-              {% trans "Your puzzle seems to be invalid or incomplete!" %}
+              {% trans "You can't solve any farther by deduction. Make a guess or check that the puzzle is correct." %}
             </p>
-          {% endif %} -->
+          {% endif %}
             <form class="m-t" role="form" method="post" action="{% url 'home' %}">
             {% csrf_token %}
             {{ form.management_form }}
@@ -39,8 +39,11 @@
               <br/>
               <p>
                 <button type="hint" name="action" value="hint" class="btn btn-primary block m-b" style="width:100%">{% trans "Hint" %}</button>
-                <button type="generate" name="action" value="generate" class="btn btn-primary m-b" style="width:49%">{% trans "Generate" %}</button>
-                <button type="check" name="action" value="check" class="btn btn-primary m-b" style="width:50%">{% trans "Check" %}</button>
+                <button type="check" name="action" value="check" class="btn btn-primary block m-b" style="width:100%">{% trans "Check" %}</button>
+                <button type="generate" name="action" value="1" class="btn btn-primary m-b" style="width:24%">{% trans "Level 1" %}</button>
+                <button type="generate" name="action" value="2" class="btn btn-primary m-b" style="width:24%">{% trans "Level 2" %}</button>
+                <button type="generate" name="action" value="3" class="btn btn-primary m-b" style="width:24%">{% trans "Level 3" %}</button>
+                <button type="generate" name="action" value="4" class="btn btn-primary m-b" style="width:25%">{% trans "Level 4" %}</button>
               </p>
             </form>
         </div>
