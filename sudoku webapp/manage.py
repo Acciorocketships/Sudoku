@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 import os
 import sys
+import subprocess
+
+subprocess.Popen('ipconfig getifaddr en0'.split())
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "app.settings")

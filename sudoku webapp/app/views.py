@@ -41,8 +41,6 @@ def home(request):
 		else:
 			blinktype = 'blink2'
 		widget['class'] += ' animate ' + blinktype
-		print(cell)
-		print(widget['class'])
 	elif action == 'check':
 		solver = Sudoku(sudokuboard.board)
 		solver.step = False
