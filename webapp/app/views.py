@@ -25,7 +25,7 @@ def home(request):
 
 	sudokuform = SudokuForm()
 
-	if action.isdigit():
+	if type(action) == str and action.isdigit():
 		level = int(action)
 		matrix = sudokuboard.generate(level)
 	else:
