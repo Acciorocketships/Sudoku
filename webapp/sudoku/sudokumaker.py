@@ -316,9 +316,12 @@ def generate(level):
             return generate(level)
         t2 = time.time()
         t3 = t2 - t1
-        print("Runtime is " + str(t3) + " seconds")
-        print("Guesses: " + str(s[1]))
-        print("Level: " + str(s[2]))
+        try:
+            print("Runtime is " + str(t3) + " seconds")
+            print("Guesses: " + str(s[1]))
+            print("Level: " + str(s[2]))
+        except:
+            pass
         return printSudoku(s[0])
     if level == 'Medium':
         p = perfectSudoku()
@@ -332,9 +335,12 @@ def generate(level):
             return generate(level)
         t2 = time.time()
         t3 = t2 - t1
-        print("Runtime is " + str(t3) + " seconds")
-        print("Guesses: " + str(s[1]))
-        print("Level: " + str(s[2]))
+        try:
+            print("Runtime is " + str(t3) + " seconds")
+            print("Guesses: " + str(s[1]))
+            print("Level: " + str(s[2]))
+        except:
+            pass
         return printSudoku(s[0])
     if level == 'Hard':
         p = perfectSudoku()
@@ -353,9 +359,12 @@ def generate(level):
             return generate(level)
         t2 = time.time()
         t3 = t2 - t1
-        print("Runtime is " + str(t3) + " seconds")
-        print("Guesses: " + str(s[1]))
-        print("Level: " + str(s[2]))
+        try:
+            print("Runtime is " + str(t3) + " seconds")
+            print("Guesses: " + str(s[1]))
+            print("Level: " + str(s[2]))
+        except:
+            pass
         return printSudoku(s[0])
     if level == 'Insane':
         p = perfectSudoku()
@@ -367,9 +376,12 @@ def generate(level):
                 return generate(level)
         t2 = time.time()
         t3 = t2 - t1
-        print("Runtime is " + str(t3) + " seconds")
-        print("Guesses: " + str(s[1]))
-        print("Level: " + str(s[2]))
+        try:
+            print("Runtime is " + str(t3) + " seconds")
+            print("Guesses: " + str(s[1]))
+            print("Level: " + str(s[2]))
+        except:
+            pass
         return printSudoku(s[0])
     else:
         raise(ValueError)

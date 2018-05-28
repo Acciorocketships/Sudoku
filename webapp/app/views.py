@@ -36,7 +36,10 @@ def home(request):
 		solver = Sudoku(matrix)
 		cell,value = next(solver)
 		if cell != None:
-			print(str(value) + " in cell " + str((cell[0]+1,cell[1]+1)))
+			try:
+				print(str(value) + " in cell " + str((cell[0]+1,cell[1]+1)))
+			except:
+				pass
 			widget = get_cell_attrs(sudokuform,cell)
 			mid1 = (cell[0] >= 3 and cell[0] <= 5)
 			mid2 = (cell[1] >= 3 and cell[1] <= 5)
